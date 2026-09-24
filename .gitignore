@@ -1,0 +1,9 @@
+# Proteger credenciales privadas de la IA
+php/config.php
+config.php
+.env
+
+# Archivos de sistema y logs
+*.log
+.DS_Store
+Thumbs.db
