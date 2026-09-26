@@ -16,13 +16,13 @@
     <!-- Caja que limita el ancho en computadoras -->
     <div class="col-12 col-md-6 col-lg-4">
         
-        <form action="login.php" method="POST" class="p-4 border rounded bg-white shadow-sm">
+        <form action="index.php?action=login" method="POST" class="p-4 border rounded bg-white shadow-sm">
             <h3 class="text-center mb-4">Inicio De Sesion</h3>
 
             <!-- 1 USUARIO -->
             <div class="mb-3">
                 <label for="usuario" class="form-label font-weight-bold">Usuario</label>
-                <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
+                <input class="form-control" type="text" id="usuario" name="username" placeholder="Nombre de usuario" required>
             </div>
 
 
@@ -38,7 +38,7 @@
             <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
             
 <p class="text-center mt-3">
-    ¿No tienes cuenta? <a href="registro.php">Registrate aquí</a>
+    ¿No tienes cuenta? <a href="index.php?action=registro">Registrate aquí</a>
 </p>
 
 
