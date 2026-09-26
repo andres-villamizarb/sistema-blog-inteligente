@@ -5,7 +5,7 @@ require_once 'app/models/UserModel.php';
 
 class AuthController {
     
-    private $userModel;
+    private UserModel $userModel;
 
     public function __construct() {
         // Inicializamos el modelo para conectarnos a la base de datos (o al JSON)
