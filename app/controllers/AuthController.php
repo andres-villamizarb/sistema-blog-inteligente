@@ -38,6 +38,7 @@ class AuthController {
                 // Fallo: Usuario o contraseña incorrectos
                 $error = "Credenciales incorrectas. Inténtalo de nuevo.";
                 require_once 'app/views/login.php'; // Recargamos la vista mostrándole el error
+              
             }
             
         } else {
