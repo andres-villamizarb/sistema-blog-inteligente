@@ -63,7 +63,7 @@ class AuthController {
             // PASO 4: El Controlador (TÚ) toma decisiones basándose en la respuesta del Modelo
             if ($registroExitoso) {
                 // Si el Modelo dijo 'true' (se guardó con éxito), redirigimos al usuario a la página de Login
-                header("Location: index.php?action=login");
+                header("Location: index.php?action=login&success=1");
                 exit(); // Siempre ponemos exit después de un header para detener el código
             } else {
                 // Si el Modelo dijo 'false' (el usuario ya existía), guardamos un mensaje de error
