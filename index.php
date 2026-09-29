@@ -1,7 +1,9 @@
 <?php
+require_once 'app/controllers/IAController.php';
 require_once 'app/controllers/AuthController.php';
 require_once 'app/controllers/PostController.php';
 
+$iaController = new IAController();
 $authController = new AuthController();
 $postController = new PostController();
 
@@ -29,7 +31,11 @@ switch ($action) {
         // Acción para procesar y guardar la nueva publicación
         $postController->create();
         break;
-    
+        
+    case 'api_ia':
+    $iaController->procesarPeticion();
+    break;
+
     default:
         $authController->login();
         break;
