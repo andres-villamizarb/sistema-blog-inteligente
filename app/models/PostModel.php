@@ -46,6 +46,7 @@ class PostModel {
                 $post['titulo'] = htmlspecialchars($titulo);
                 $post['contenido'] = htmlspecialchars($contenido);
                 if ($imagen !== null) {
+                    // Borrar la imagen previa si es reemplazada
                     if (!empty($post['imagen']) && file_exists($post['imagen'])) {
                         unlink($post['imagen']);
                     }
@@ -76,35 +77,23 @@ class PostModel {
     }
 
     // ==========================================================
-    // BÚSQUEDA Y PAGINACIÓN PARA JSON (CON SOPORTE DE CATEGORÍA)
+    // BÚSQUEDA Y PAGINACIÓN PARA JSON
     // ==========================================================
 
-    public function searchPosts($buscar = '', $categoria = '') {
+    // Filtrar publicaciones por término de búsqueda (título o contenido)
+    public function searchPosts($buscar = '') {
         $posts = $this->getAll();
         
-        if (empty($buscar) && empty($categoria)) {
+        if (empty($buscar)) {
             return $posts;
         }
 
         $term = mb_strtolower($buscar);
-        $catTerm = mb_strtolower($categoria);
         
-        return array_values(array_filter($posts, function($post) use ($term, $catTerm) {
-            $cumpleBuscar = true;
-            $cumpleCategoria = true;
-
-            if (!empty($term)) {
-                $titulo = mb_strtolower($post['titulo'] ?? '');
-                $contenido = mb_strtolower($post['contenido'] ?? '');
-                $cumpleBuscar = (strpos($titulo, $term) !== false || strpos($contenido, $term) !== false);
-            }
-
-            if (!empty($catTerm)) {
-                $postCategoria = mb_strtolower($post['categoria'] ?? 'general');
-                $cumpleCategoria = ($postCategoria === $catTerm);
-            }
-
-            return $cumpleBuscar && $cumpleCategoria;
+        return array_values(array_filter($posts, function($post) use ($term) {
+            $titulo = mb_strtolower($post['titulo']);
+            $contenido = mb_strtolower($post['contenido']);
+            return (strpos($titulo, $term) !== false || strpos($contenido, $term) !== false);
         }));
     }
 

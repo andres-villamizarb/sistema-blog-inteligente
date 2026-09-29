@@ -31,7 +31,8 @@ class AuthController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = trim($_POST['username'] ?? '');
+            // Lectura con fallback para 'username' o 'usuario'
+            $username = trim($_POST['username'] ?? $_POST['usuario'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
             // VALIDACIONES DE BACKEND (LOGIN)
@@ -47,12 +48,11 @@ class AuthController {
                 return;
             }
 
-         // Ejemplo de validación dentro de login() o registro()
-if (!preg_match("/^[a-zA-Z0-9]{6,16}$/", $password)) {
-    $error = "La contraseña solo debe contener letras y números (de 6 a 16 caracteres), sin caracteres especiales.";
-    require_once 'app/views/login.php'; // o registro.php según corresponda
-    return;
-}
+            if (!preg_match("/^[a-zA-Z0-9]{6,16}$/", $password)) {
+                $error = "La contraseña solo debe contener letras y números (de 6 a 16 caracteres), sin caracteres especiales.";
+                require_once 'app/views/login.php';
+                return;
+            }
 
             $loginValido = $this->userModel->login($username, $password);
 
@@ -85,7 +85,8 @@ if (!preg_match("/^[a-zA-Z0-9]{6,16}$/", $password)) {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = trim($_POST['username'] ?? '');
+            // Lectura con fallback para 'username' o 'usuario'
+            $username = trim($_POST['username'] ?? $_POST['usuario'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
             // VALIDACIONES DE BACKEND (REGISTRO)

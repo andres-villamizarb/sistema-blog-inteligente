@@ -1,21 +1,12 @@
 [
     {
-        "id": 1790698588,
-        "titulo": "andrera",
-        "contenido": "dsasdsadasd",
-        "categoria": "Programación",
-        "autor": "andrea",
-        "imagen": "uploads\/img_6abbe45c44063.jpg",
-        "fecha": "2026-09-29 18:16:28"
-    },
-    {
-        "id": 1790695920,
-        "titulo": "dasdas",
-        "contenido": "asdasdasd",
-        "categoria": "Sistemas",
+        "id": 1790695912,
+        "titulo": "bn bn mbn",
+        "contenido": "asdsadasdsadsad",
+        "categoria": "General",
         "autor": "andres",
-        "imagen": null,
-        "fecha": "2026-09-29 17:32:00"
+        "imagen": "uploads\/img_6abbd9e848abe.jpg",
+        "fecha": "2026-09-29 17:31:52"
     },
     {
         "id": 1790694014,
@@ -34,5 +25,14 @@
         "autor": "lui",
         "imagen": "uploads\/img_6abbc079ba274.jpg",
         "fecha": "2026-09-29 15:43:21"
+    },
+    {
+        "id": 1790702871,
+        "titulo": "dfa",
+        "contenido": "asdsadsadsa",
+        "categoria": "Programación",
+        "autor": "andre",
+        "imagen": null,
+        "fecha": "2026-09-29 19:27:51"
     }
 ]

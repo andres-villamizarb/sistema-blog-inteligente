@@ -46,18 +46,28 @@ class PostController {
             exit();
         }
 
-        // Capturar término de búsqueda y categoría
+        // 1. Obtener parámetros de búsqueda y categoría
         $buscar = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
         $categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
-
+        
         $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
         if ($paginaActual < 1) $paginaActual = 1;
 
         $porPagina = 6;
 
-        // Pasar ambos parámetros al modelo
-        $postsFiltrados = $this->postModel->searchPosts($buscar, $categoria);
-        
+        // 2. Obtener publicaciones filtradas por buscador
+        $postsFiltrados = $this->postModel->searchPosts($buscar);
+
+        // 3. Filtrar por categoría (si se seleccionó una categoría específica)
+        if (!empty($categoria)) {
+            $postsFiltrados = array_filter($postsFiltrados, function($post) use ($categoria) {
+                return isset($post['categoria']) && strcasecmp($post['categoria'], $categoria) === 0;
+            });
+            // Reindexar el array para mantener índices secuenciales
+            $postsFiltrados = array_values($postsFiltrados);
+        }
+
+        // 4. Calcular paginación sobre los resultados filtrados
         $totalPosts = count($postsFiltrados);
         $totalPaginas = (int)ceil($totalPosts / $porPagina);
 
@@ -178,5 +188,6 @@ class PostController {
         header("Location: index.php?action=home");
         exit();
     }
+    
 }
 ?>
