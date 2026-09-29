@@ -3,7 +3,7 @@
 class IAController {
     
     // API KEY
-    private string $apiKey = 'AQUI_VA_TU_API_KEY';
+    private string $apiKey = 'APIKEY';
 
     public function procesarPeticion() {
         // Le decimos al navegador que vamos a devolver un JSON
