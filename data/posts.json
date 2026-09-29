@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1790698588,
+        "titulo": "andrera",
+        "contenido": "dsasdsadasd",
+        "categoria": "Programación",
+        "autor": "andrea",
+        "imagen": "uploads\/img_6abbe45c44063.jpg",
+        "fecha": "2026-09-29 18:16:28"
+    },
+    {
+        "id": 1790695920,
+        "titulo": "dasdas",
+        "contenido": "asdasdasd",
+        "categoria": "Sistemas",
+        "autor": "andres",
+        "imagen": null,
+        "fecha": "2026-09-29 17:32:00"
+    },
+    {
+        "id": 1790694014,
+        "titulo": "la programacion",
+        "contenido": "es el proceso de diseñar, escribir, probar y mantener instrucciones precisas que una computadora ejecuta para resolver problemas o automatizar tareas.\r\nConceptos Clave\r\n\r\n• Algoritmo: Secuencia ordenada de pasos lógicos necesarios para llegar a una solución.\r\n• Código fuente: Conjunto de líneas de texto escritas en un lenguaje de programación comprensible para el ser humano.\r\n\r\n• Traducción: Proceso mediante el cual el código se convierte en lenguaje de máquina a través de un compilador o un intérprete.\r\n\r\nLenguajes Populares\r\n\r\n• Python: Ideal para principiantes, inteligencia artificial y análisis de datos.\r\n\r\n• JavaScript: Esencial para el desarrollo web interactivo.\r\n\r\n• Java \/ C++: Usados en aplicaciones robustas, sistemas y videojuegos.",
+        "categoria": "Programación",
+        "autor": "andres",
+        "imagen": "uploads\/img_6abbd27e2e7e9.jpg",
+        "fecha": "2026-09-29 17:00:14"
+    },
+    {
+        "id": 1790689401,
+        "titulo": "el folaaa",
+        "contenido": "ngcdhgdcdfhgn",
+        "categoria": "General",
+        "autor": "lui",
+        "imagen": "uploads\/img_6abbc079ba274.jpg",
+        "fecha": "2026-09-29 15:43:21"
+    }
+]
