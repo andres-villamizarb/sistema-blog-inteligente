@@ -1,55 +1,89 @@
 <?php
-
 class IAController {
-    
-    // API KEY
-    private string $apiKey = 'APIKEY';
+    // Pega tu Trial Key de Cohere aquí
+    private string $apiKey = 'axD90LAHbQv1AlqukLzx7F2ufaGwZvRkyfixuiLc';
 
     public function procesarPeticion() {
-        // Le decimos al navegador que vamos a devolver un JSON
         header('Content-Type: application/json');
-
-        // Capturamos lo que envíe el JavaScript desde el frontend
+        
+        // Capturamos lo que envía JavaScript
         $input = json_decode(file_get_contents('php://input'), true);
         $texto = $input['texto'] ?? '';
-        $accion = $input['accion'] ?? 'corregir'; // Puede ser 'corregir' o 'titulo'
+        $accion = $input['accion'] ?? '';
 
         if (empty($texto)) {
-            echo json_encode(['error' => 'No se recibió texto.']);
-            exit();
+            echo json_encode(['error' => 'Texto vacío']);
+            return;
         }
 
-        // Definimos las instrucciones para la IA según lo que pida el usuario
-        if ($accion === 'titulo') {
-            $prompt = "Eres un experto en SEO y redacción de blogs. Lee el siguiente texto y sugiere 3 títulos atractivos y cortos. Devuelve solo los títulos, separados por guiones: \n\n" . $texto;
+     // Preparamos las instrucciones
+        $prompt = "";
+        if ($accion === 'corregir') {
+            $prompt = "Corrige los errores ortográficos y gramaticales del siguiente texto. Responde ÚNICAMENTE con el texto corregido, sin explicaciones adicionales:\n\n" . $texto;
+        } else if ($accion === 'titulo') {
+            $prompt = "Genera una opcion de título atractivo para un blog basado en este texto. Responde ÚNICAMENTE con un título:\n\n" . $texto;
+        } else if ($accion === 'resumir') {
+            $prompt = "Escribe un resumen corto, directo y atractivo del siguiente texto. Responde ÚNICAMENTE con el resumen:\n\n" . $texto;
         } else {
-            $prompt = "Eres un editor profesional. Corrige los errores ortográficos y gramaticales del siguiente texto, mejorando la redacción pero manteniendo el tono original. Devuelve únicamente el texto corregido, sin explicaciones extra: \n\n" . $texto;
+            $prompt = $texto;
         }
 
-        // Preparamos la URL de la API de Gemini (usamos el modelo 1.5 Flash que es rapidísimo)
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" . trim($this->apiKey);
-
-        // Estructura de datos que exige Google
+        // Configuración de la API de Cohere v2
+        $url = "https://api.cohere.com/v2/chat";
+        
+        // Estructura oficial para Cohere v2
         $data = [
-            "contents" => [
-                ["parts" => [["text" => $prompt]]]
-            ]
+            "model" => "command-a-plus-05-2026", 
+            "messages" => [
+                [
+                    "role" => "user",
+                    "content" => $prompt
+                ]
+            ],
+            "temperature" => 0.7
         ];
 
-        // Configuramos cURL para hacer la petición por POST
+        // Iniciamos la conexión con cURL
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer " . $this->apiKey,
+            "Content-Type: application/json",
+            "Accept: application/json"
+        ]);
 
-        // Ejecutamos y cerramos
         $response = curl_exec($ch);
+        
+        if(curl_errno($ch)){
+            echo json_encode(['error' => curl_error($ch)]);
+            curl_close($ch);
+            return;
+        }
         curl_close($ch);
 
-        // Devolvemos la respuesta cruda de Google al frontend para que JS la procese
-        echo $response;
-        exit();
+        $responseData = json_decode($response, true);
+        
+        // Extraemos la respuesta de Cohere v2 buscando el bloque de texto
+        if (isset($responseData['message']['content'])) {
+            $resultado = '';
+            // Recorremos la respuesta para ignorar el "thinking" y agarrar solo el texto
+            foreach ($responseData['message']['content'] as $bloque) {
+                if (isset($bloque['type']) && $bloque['type'] === 'text') {
+                    $resultado = $bloque['text'];
+                    break;
+                }
+            }
+            
+            if ($resultado !== '') {
+                echo json_encode(['resultado' => trim($resultado)]);
+            } else {
+                echo json_encode(['error' => 'No se encontró texto en la respuesta', 'detalles' => $response]);
+            }
+        } else {
+            echo json_encode(['error' => 'Error en la API de Cohere', 'detalles' => $response]);
+        }
     }
 }
 ?>

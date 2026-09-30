@@ -31,7 +31,15 @@ header("Expires: 0");
             width: 100%;
             border-radius: 8px;
         }
+        
+        /* Estilo sutil para el cuadro de la IA */
+        .ai-summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            border-radius: 4px;
+        }
     </style>
+    
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
@@ -91,6 +99,22 @@ header("Expires: 0");
                         </span>
                     </div>
 
+                    <!-- AQUÍ EMPIEZA EL BOTÓN DE RESUMIR CON IA -->
+                    <div class="mb-4">
+                        <button id="btn-resumir" onclick="resumirPost()" class="btn btn-outline-primary btn-sm rounded-pill fw-bold">
+                            <i class="bi bi-magic me-1"></i> Resumir con IA
+                        </button>
+                        
+                        <!-- Caja oculta donde aparecerá el resumen -->
+                        <div id="caja-resumen" class="ai-summary-box p-3 mt-3 shadow-sm" style="display: none;">
+                            <div class="d-flex align-items-center mb-2 text-primary fw-bold">
+                                <i class="bi bi-robot me-2"></i> Resumen Inteligente:
+                            </div>
+                            <p id="texto-resumen" class="mb-0 text-dark small lh-lg"></p>
+                        </div>
+                    </div>
+                    <!-- AQUÍ TERMINA EL BOTÓN DE RESUMIR CON IA -->
+
                     <!-- Imagen -->
                     <?php if (!empty($post['imagen'])): ?>
                         <div class="mb-4">
@@ -99,8 +123,9 @@ header("Expires: 0");
                     <?php endif; ?>
 
                     <!-- Contenido Completo -->
-                    <div class="post-content text-secondary fs-6 lh-lg mb-4">
-                        <?php echo nl2br(htmlspecialchars($post['contenido'])); ?>
+                    <!-- LE AGREGUÉ EL ID "contenido-del-post" PARA QUE JS PUEDA LEERLO -->
+                    <div id="contenido-del-post" class="post-content text-secondary fs-6 lh-lg mb-4">
+                        <?php echo $post['contenido']; ?>
                     </div>
 
                     <!-- Opciones de Autor -->
@@ -129,5 +154,8 @@ header("Expires: 0");
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ENLAZAMOS TU SCRIPT (con el truco del time para que no guarde caché) -->
+    <script src="scriptIA.js"></script>
 </body>
 </html>

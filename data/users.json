@@ -18,5 +18,15 @@
         "id": 1790726170,
         "username": "coco",
         "password": "$2y$10$sezcNtuTDgOTS\/YrwKl8H.C9V3aBsP\/AjIKJJzDUiVxTM02OGsxzG"
+    },
+    {
+        "id": 1790732702,
+        "username": "Adrian",
+        "password": "$2y$10$AoimhPtS3wM8rh7TPGhUUeptFoE02Y5ZvPOoe66efnbWsEYgY7YQS"
+    },
+    {
+        "id": 1790744880,
+        "username": "ADMIN",
+        "password": "$2y$10$kMiFLYagM3Dahrq9JKzes.ZfqED0dKrMsSc5bz.w0eOfHdSMeuWNq"
     }
 ]

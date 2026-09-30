@@ -14,6 +14,27 @@ header("Expires: 0");
 ?>
 <!DOCTYPE html>
 <html lang="es">
+    <!-- Cargar TinyMCE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+
+<!-- Inicializar el editor -->
+<script>
+  tinymce.init({
+    selector: '#contenido',
+    plugins: 'lists link code preview',
+    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | code',
+    menubar: false,
+    height: 400,
+    // Eliminamos language: 'es' para evitar el bloqueo de Edge
+    
+    // Esta función asegura que el formulario de PHP reciba el texto al publicar
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save(); 
+        });
+    }
+  });
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,6 +136,6 @@ header("Expires: 0");
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="scriptIA.js"></script>
 </body>
 </html>
