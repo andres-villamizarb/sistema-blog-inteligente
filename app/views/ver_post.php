@@ -36,7 +36,7 @@ header("Expires: 0");
 <body class="bg-light d-flex flex-column min-vh-100">
 
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4 sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.php?action=home">
                 <i class="bi bi-journal-code me-2"></i>Mi Blog

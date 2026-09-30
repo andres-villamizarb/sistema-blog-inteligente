@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Estilos Generales de Mi Blog AI
+   ========================================================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark-bg: #0f172a;
+    --ai-purple: #6366f1;
+    --ai-gradient: linear-gradient(90deg, #6366f1, #8b5cf6);
+    --ai-btn-gradient: linear-gradient(90deg, #2563eb, #3b82f6);
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #212529;
+}
+
+/* --- Badges y Botones con Temática de IA --- */
+.badge-ai {
+    background: var(--ai-gradient);
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.btn-ai-primary {
+    background: var(--ai-btn-gradient);
+    color: #ffffff !important;
+    border: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-ai-primary:hover {
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+.btn-ai-magic {
+    background: var(--ai-gradient);
+    color: #ffffff !important;
+    border: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-ai-magic:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Hero Banner & Landing --- */
+.hero-section, .hero-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+/* --- Tarjetas (Autenticación y Funcionalidades) --- */
+.auth-card, .feature-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.feature-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* --- Tarjetas de Blog --- */
+.blog-card {
+    border-radius: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
+}
+
+.post-img-container {
+    height: 180px;
+    background-color: #e9ecef;
+    overflow: hidden;
+}
+
+.post-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-detail-img {
+    max-height: 450px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+}

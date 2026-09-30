@@ -25,77 +25,13 @@ header("Expires: 0");
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
-    <style>
-        /* Estilos Personalizados de la Plataforma */
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            color: #212529;
-        }
-
-        /* Banner Hero Principal */
-        .hero-banner {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-bottom: 4px solid #2563eb;
-        }
-
-        /* Tarjetas con Efecto Elevar (Hover) */
-        .blog-card {
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            background-color: #ffffff;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        .post-img-container {
-            height: 200px;
-            background-color: #f1f5f9;
-            overflow: hidden;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-
-        .post-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-card:hover .post-img-container img {
-            transform: scale(1.04);
-        }
-
-        /* Insignia de IA */
-        .badge-ai {
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        /* Botón Asistente IA floating/destacado */
-        .btn-ai-magic {
-            background: linear-gradient(90deg, #2563eb, #3b82f6);
-            color: #ffffff;
-            border: none;
-            font-weight: 600;
-        }
-
-        .btn-ai-magic:hover {
-            background: linear-gradient(90deg, #1d4ed8, #2563eb);
-            color: #ffffff;
-        }
-    </style>
+    <!-- Hoja de Estilos Externa -->
+    <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
     <!-- Navegación Superior -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.php?action=home">
                 <i class="bi bi-cpu-fill text-primary fs-4"></i>
@@ -326,7 +262,7 @@ header("Expires: 0");
                             <li><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>Sugerencia de Títulos y Temas</strong> al redactar.</li>
                             <li><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>Resumen Automático</strong> de publicaciones extensas.</li>
                             <li><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>Corrección Gramatical</strong> en tiempo real.</li>
-                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>Recomendaciones Personalizadas</strong> según tu historial.</li>
+                            
                         </ul>
                     </div>
                 </div>
